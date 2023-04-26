@@ -38,7 +38,8 @@ public enum WitnessType {
         visit(input);
         return Arrays.stream(WitnessType.values())
             .filter(name -> name.witness.equals(input))
-            .findFirst().orElseThrow(IllegalAccessError::new).getWitness();
+            .map(WitnessType::getWitness)
+            .findFirst().orElseThrow(IllegalAccessError::new);
     }
 
     Witness getWitness() {

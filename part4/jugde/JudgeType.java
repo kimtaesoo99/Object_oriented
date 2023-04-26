@@ -32,7 +32,8 @@ public enum JudgeType {
         }
         return Arrays.stream(JudgeType.values())
             .filter(name -> name.judge.equals(input))
-            .findFirst().orElseThrow(IllegalAccessError::new).getJudge();
+            .map(JudgeType::getJudge)
+            .findFirst().orElseThrow(IllegalAccessError::new);
     }
 
     Judge getJudge() {
